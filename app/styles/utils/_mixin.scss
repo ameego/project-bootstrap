@@ -1,0 +1,137 @@
+//
+// Defining custom mixins
+//
+
+@mixin custom-clearfix() {
+  &:after {
+    content:"";
+    display:table;
+    clear:both;
+  }
+}
+
+// https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/addons/_font-face.scss
+@mixin font-face($font-family, $file-path, $weight: normal, $style: normal ) {
+	@font-face {
+		font-family: $font-family;
+		src: url('#{$file-path}.eot');
+		src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'),
+			url('#{$file-path}.woff') format('woff'),
+			url('#{$file-path}.ttf') format('truetype'),
+			url('#{$file-path}.svg##{$font-family}') format('svg');
+		font-weight: $weight;
+		font-style: $style;
+	}
+}
+
+// used to truncate a text
+@mixin text-overflow(){
+	overflow: hidden;
+	text-overflow: ellipsis;	
+	white-space: nowrap;
+}
+
+// used to generate a double border
+@mixin double-border($color1, $color2, $direction) {
+  position: relative;
+  z-index: 1;  
+  border-#{$direction}: 1px solid $color1;  
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-#{$direction}: 1px solid $color2;
+  }
+}
+
+// font-size for rem with px fallback
+@mixin font-size($sizeValue: 1.6){
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
+}
+
+@mixin buttonBorder($topBottomBorder, $sideBorder) {
+  border-top: 1px solid $topBottomBorder;
+  border-bottom: 1px solid $topBottomBorder;
+  border-left: 1px solid $sideBorder;
+  border-right: 1px solid $sideBorder;
+}
+
+
+@function parseInt($n) {
+  @return $n / ($n * 0 + 1);
+}
+
+@mixin rem($property, $values) {
+  $px : ();
+  $rem: ();
+
+  @each $value in $values {
+
+    @if $value == 0 or $value == auto {
+      $px : append($px , $value);
+      $rem: append($rem, $value);
+    }
+
+    @else {
+      $unit: unit($value);
+      $val: parseInt($value);
+
+      @if $unit == "px" {
+        $px : append($px,  $value);
+        $rem: append($rem, ($val / 10 + rem));
+      }
+
+      @if $unit == "rem" {
+        $px : append($px,  ($val * 10 + px));
+        $rem: append($rem, $value);
+      }
+    }
+  }
+
+  @if $px == $rem {
+    #{$property}: $px;
+  } @else {
+    #{$property}: $px;
+    #{$property}: $rem;
+  }
+}
+
+// mixin for inline media queries
+@mixin mediaquery($property) {
+  @if $property == high-density {
+    @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) { @content; }
+  }
+  @else if $property == medium-density {
+    @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi) { @content; }
+  }
+}
+
+@mixin simple-gradient($from, $to){
+  background-color: $from;
+  @include filter-gradient($from, $to, vertical);
+  @include background-image(linear-gradient(top, $from 0%, $to 100%));
+}
+
+@mixin breakpoint($point) {
+  @if $point == very-large {
+    @media (max-width: 70em) { @content; }
+  }  
+  @if $point == large {
+    @media (max-width: 52em) { @content; }
+  }
+  @else if $point == medium {
+    @media (max-width: 45em) { @content; }
+  }
+  @else if $point == small {
+    @media (max-width: 40em)  { @content; }
+  }
+  @else if $point == very-small {
+    @media (max-width: 28em)  { @content; }
+  }
+}

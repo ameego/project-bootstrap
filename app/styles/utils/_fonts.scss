@@ -1,0 +1,8 @@
+// output font-face for each font in the $fonts list
+// the name of the font and the name of the folder have to be the same
+
+$fonts: my-font-1, my-font-2;
+
+@each $item in $fonts {
+  @include font-face(#{$item}, '../fonts/#{$item}/#{$item}');
+}

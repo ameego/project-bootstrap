@@ -1,0 +1,6 @@
+@import "compass/css3/background-size";
+@import "utils/sprites/high-res/helpers";
+@import "utils/sprites/high-res/sprites";
+
+// Usage
+// .locate > a { @include retina-sprite($nav-sprites, locate, $offset-x: 10px, $offset-y: 9px); }

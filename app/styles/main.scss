@@ -1,0 +1,17 @@
+@import "compass";
+@import "compass/reset";
+@import "compass/css3/transform";
+@import "compass/css3/transition";
+@import "compass/utilities/general/clearfix";
+@import "compass/css3/box-shadow";
+@import "compass/typography/text/replacement";
+@import "compass/utilities/sprites/base";
+@import "utils/all";
+@import "modules/all";
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi),
+only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi)
+{
+  @import "high-res";
+}

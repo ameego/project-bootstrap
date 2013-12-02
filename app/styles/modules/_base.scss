@@ -1,0 +1,41 @@
+//
+//	Defines all the base styles using the type selector
+//
+
+html {
+  font-size: 62.5%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+* { @include box-sizing(border-box); }
+
+input, a, textarea {
+  outline: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+ul { list-style-type: none; }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder { color: rgba(93, 104, 112, .7); }
+
+input:-moz-placeholder,
+textarea:-moz-placeholder { color: rgba(93, 104, 112, .7); }
+
+.outlined { -webkit-tap-highlight-color: rgba(0, 0, 0, 1); }
+
+.sup {
+  position: relative; 
+  top: -.55em;
+  margin: 0 2px 0 0;
+  font-size: .55em;
+}
+
+.visible { display: block !important; }
+.hidden { display: none !important; }
