@@ -2,7 +2,7 @@
         OVERVIEW
 ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
-This boilerplate holds all the basic things we need to kickstart quickly a project:
+This boilerplate has the basics to kickstart quickly a project:
 
     –– Basic folder structure
 
@@ -12,11 +12,11 @@ This boilerplate holds all the basic things we need to kickstart quickly a proje
             ø Concat: concatenates files together,
             ø Copy: copies files from one place to another,
             ø Compass: compiles sass files,
-            ø Jshint: validates code,
+            ø Jshint: validates js code,
             ø Jasmine: exectutes unit-test
             ø Uglify: minifies & uglify code,
-            ø Data-uri: converts image-path to data-uri,
-            ø Minification of images: minifies jpg/png images,
+            ø Data-uri: converts image-path to data-uri for the embeded/ image folder
+            ø Compression of images: compress jpg/png images,
             ø CSS Style guide: generates CSS Style Guide
 
     –– Structure for SASS, including:
@@ -26,11 +26,18 @@ This boilerplate holds all the basic things we need to kickstart quickly a proje
 
     –– Basic index.html
 
-    –– Basic folder structure for scripts
 
-    –– Basic folder structure for unit-test
 
-    –– Basic folder structure for Robot
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+        REASON BEING
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+This project is collaborative.
+
+It must benefit from everybody's experiences and ideas.
+
+It must be always up to date to make our life easier.
+
 
 
 ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -57,8 +64,7 @@ This boilerplate holds all the basic things we need to kickstart quickly a proje
 4. Install Sass
 	sudo gem install sass
 
-5. Get all the dependencies required to build the project. Run command in project directory.
-    npm install
+5. Run command in project directory `npm install` to get all the dependencies required to build the project.
 
 TO RUN THE BUILD (has to be done from the folder of the project)
     $ grunt

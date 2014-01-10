@@ -9,9 +9,10 @@
 @import "utils/all";
 @import "modules/all";
 
-@media
-only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi),
-only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi)
-{
-  @import "high-res";
-}
+// to be discussed
+// @media
+// 	only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi),
+// 	only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi)
+// {
+//   @import "high-res";
+// }

@@ -1,5 +1,7 @@
 module.exports = function(grunt) {
 
+    require('load-grunt-tasks')(grunt);
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
@@ -57,6 +59,45 @@ module.exports = function(grunt) {
             }
         },
 
+        replace : {
+            css : {
+                options : {
+                    variables : {
+                        'cssName' : 'main'
+                    },
+                    prefix : '@@'
+                },
+                files : {
+                    'dist/index.html' : [ 'dist/index.html' ]
+                }
+            }
+        },
+
+        dataUri: {
+            dist: {
+                src: ['<%= distFolder %>/styles/*.css'],
+                dest: '<%= distFolder %>/styles/',
+                options: {
+                    target: ['<%= distFolder %>/<%= imgFolder %>/**/embeded/*.*'],
+                    fixDirLevel: true
+                }
+            }
+        },
+
+        imagemin: {
+            img: {
+                options: { 
+                    optimizationLevel: 4 
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%= distFolder %>/<%= imgFolder %>/',
+                    src: '**/**/*.{png,jpg}',
+                    dest: '<%= distFolder %>/<%= imgFolder %>/'
+                }]
+            }
+        },
+
         jshint : {
             options : {
                 curly : true,
@@ -89,21 +130,7 @@ module.exports = function(grunt) {
                 src: '<%=concat.dist.dest%>',
                 dest: '<%=concat.dist.dest%>'
             }
-        },
-
-        replace : {
-            css : {
-                options : {
-                    variables : {
-                        'cssName' : 'main'
-                    },
-                    prefix : '@@'
-                },
-                files : {
-                    'dist/index.html' : [ 'dist/index.html' ]
-                }
-            }
-        },
+        }, 
 
         watch: {
             all: {
@@ -113,68 +140,23 @@ module.exports = function(grunt) {
                     spawn: false
                 }
             }
-        },
-
-        dataUri: {
-            dist: {
-                src: ['<%= distFolder %>/styles/*.css'],
-                dest: '<%= distFolder %>/styles/',
-                options: {
-                    target: ['<%= distFolder %>/<%= imgFolder %>/**/embeded/*.*'],
-                    fixDirLevel: true
-                }
-            }
-        },
-
-        imagemin: {
-            img: {
-                options: { optimizationLevel: 4 },
-                files: [{
-                    expand: true,
-                    cwd: '<%= distFolder %>/<%= imgFolder %>/',
-                    src: '**/**/*.{png,jpg}',
-                    dest: '<%= distFolder %>/<%= imgFolder %>/'
-                }]
-            }
-        },
-
-    
-        handlebars: {
-            compile: {
-                files: {
-                    "dist/aside.js": "app/aside.hbs",
-                }
-            }
         }
+
     });
-
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-compass');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-replace');
-
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-jasmine');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-handlebars');
-
-    grunt.loadNpmTasks('grunt-data-uri');
-    grunt.loadNpmTasks('grunt-contrib-imagemin');
-
+   
+    //
+    // Grunt profiles
+    //
     grunt.registerTask('default', [
         'clean',
         'copy',
         'concat',
         'replace',
-//        'jshint',
-//        'jasmine',
+        'jshint',
         'compass',
-        // 'handlebars',
-//        'imagemin',
-//        'uglify',
-//        'dataUri',
-        'watch'
+        'imagemin',
+        'dataUri',
+       // 'jasmine'
+       // 'watch'       
     ]);
 };
