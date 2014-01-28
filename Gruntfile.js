@@ -5,14 +5,16 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-        appFolder: 'app',
-        distFolder: 'dist',
-        imgFolder: 'img',
-        fontFolder: 'fonts',
+        dirs: {
+            app: 'app',
+            dist: 'dist',
+            img: 'img',
+            font: 'fonts'
+        },
 
         clean: {
             dist: {
-                src: "<%= distFolder %>/"
+                src: "<%= dirs.dist %>/"
             },
             styleguide: {
                 src: "styleguide/"
@@ -21,8 +23,8 @@ module.exports = function(grunt) {
 
         concat: {
             dist: {
-                src: '<%= appFolder %>/scripts/**/*.js',
-                dest: '<%= distFolder %>/scripts/scripts.js'
+                src: '<%= dirs.app %>/scripts/**/*.js',
+                dest: '<%= dirs.dist %>/scripts/scripts.js'
             }
         },
 
@@ -39,21 +41,21 @@ module.exports = function(grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: '<%= appFolder %>/',
+                        cwd: '<%= dirs.app %>/',
                         src: ['*.html'],
-                        dest: '<%= distFolder %>/'
+                        dest: '<%= dirs.dist %>/'
                     },
                     {
                         expand: true,
-                        cwd: '<%= appFolder %>/',
-                        src: ['<%= imgFolder %>/**/*', '<%= fontFolder %>/**/*'],
-                        dest: '<%= distFolder %>/'
+                        cwd: '<%= dirs.app %>/',
+                        src: ['<%= dirs.img %>/**/*', '<%= dirs.font %>/**/*'],
+                        dest: '<%= dirs.dist %>/'
                     },
                     {
                         expand: true,
-                        cwd: '<%= fontFolder %>/',
+                        cwd: '<%= dirs.font %>/',
                         src: ['**/*'],
-                        dest: '<%= distFolder %>/'
+                        dest: '<%= dirs.dist %>/'
                     }
                 ]
             }
@@ -75,10 +77,10 @@ module.exports = function(grunt) {
 
         dataUri: {
             dist: {
-                src: ['<%= distFolder %>/styles/*.css'],
-                dest: '<%= distFolder %>/styles/',
+                src: ['<%= dirs.dist %>/styles/*.css'],
+                dest: '<%= dirs.dist %>/styles/',
                 options: {
-                    target: ['<%= distFolder %>/<%= imgFolder %>/**/embeded/*.*'],
+                    target: ['<%= dirs.dist %>/<%= dirs.img %>/**/embeded/*.*'],
                     fixDirLevel: true
                 }
             }
@@ -91,9 +93,9 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: '<%= distFolder %>/<%= imgFolder %>/',
+                    cwd: '<%= dirs.dist %>/<%= dirs.img %>/',
                     src: '**/**/*.{png,jpg}',
-                    dest: '<%= distFolder %>/<%= imgFolder %>/'
+                    dest: '<%= dirs.dist %>/<%= dirs.img %>/'
                 }]
             }
         },
@@ -111,13 +113,13 @@ module.exports = function(grunt) {
                 boss : true,
                 eqnull : true
             },
-            all : '<%= appFolder %>/**/*.js'
+            all : '<%= dirs.app %>/**/*.js'
         },
 
         jasmine: {
             common: {
                 src:[
-                    '<%= appFolder %>/scripts/test.js'
+                    '<%= dirs.app %>/scripts/test.js'
                 ],
                 options: {
                     specs: 'test/spec/*.js'
