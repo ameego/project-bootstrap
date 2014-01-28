@@ -16,13 +16,12 @@ This boilerplate has the basics to kickstart quickly a project:
             ø Jasmine: exectutes unit-test
             ø Uglify: minifies & uglify code,
             ø Data-uri: converts image-path to data-uri for the embeded/ image folder
-            ø Compression of images: compress jpg/png images,
-            ø CSS Style guide: generates CSS Style Guide
+            ø Compression of images: compress jpg/png images
 
     –– Structure for SASS, including:
             ø Sprite handling,
             ø Fonts handling,
-            ø Common Mixins / Variables / Base styles,
+            ø Common Mixins / Variables
 
     –– Basic index.html
 
