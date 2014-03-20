@@ -1,7 +1,3 @@
-––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-        OVERVIEW
-––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-
 This boilerplate has the basics to kickstart quickly a project:
 
     –– Basic folder structure
@@ -26,22 +22,7 @@ This boilerplate has the basics to kickstart quickly a project:
     –– Basic index.html
 
 
-
-––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-        REASON BEING
-––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-
-This project is collaborative.
-
-It must benefit from everybody's experiences and ideas.
-
-It must be always up to date to make our life easier.
-
-
-
-––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-        HOW TO SET UP THE PROJECT ?
-––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+# HOW TO SET UP THE PROJECT ?
 
 0. Uninstall previous version of Grunt
     npm uninstall -g grunt
